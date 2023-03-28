@@ -1,11 +1,22 @@
 import Dropskill from "../component/dropskill";
 import Skill from "../component/skilllist";
-import Contact from '../component/contactme'
+import Contact from "../component/contactme";
+import { useTheme } from "next-themes";
 
 export default function Home() {
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
+  console.log(currentTheme);
+
   return (
     <>
-      <div className="bg-white">
+      <button
+        onClick={() => (theme == "dark" ? setTheme("light") : setTheme("dark"))}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Clickme to change
+      </button>
+      <div>
         <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-28 lg:px-8">
           <div className="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
             <svg
